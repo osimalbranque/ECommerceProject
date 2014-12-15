@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= '';
+$config['base_url']	= 'http://info-timide.iut.u-bordeaux1.fr/perso/2015/osimalbranque/Projet/CodeIgniter';
 
 /*
 |--------------------------------------------------------------------------

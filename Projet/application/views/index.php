@@ -29,6 +29,7 @@ and open the template in the editor.
                     <p>Connexion</p>
                 </nav>
             </div>
+            <?php echo base_url(); ?>
         </div>
     </body>
 </html>

@@ -64,7 +64,7 @@ $autoload['libraries'] = array('database');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url','assets/assets', 'musicians/musicians', 'instruments/instruments', 'dates/dates');
+$autoload['helper'] = array('url','assets');
 
 
 /*

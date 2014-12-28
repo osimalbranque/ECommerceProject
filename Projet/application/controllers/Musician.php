@@ -7,21 +7,21 @@
  */
 
 /**
- * Description of Home
+ * Description of Musician
  *
- * @author osimalbranque
+ * @author Osiris
  */
-class Home extends CI_Controller
+class Musician extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
         
-        $this->load->view('index');
+        $this->load->model('Musician_model');
     }
     
-    public function index() 
+    public function Composers($initial)
     {
-        //$this->load->view('index');
+        $datas = $this->Musician_model->getComposersNameBeginningBy($initial);
     }
 }

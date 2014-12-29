@@ -8,7 +8,151 @@ and open the template in the editor.
     Author     : osimalbranque
 */
 
-div
+@font-face/* Police d'écriture */
 {
-    border: 1px solid black;
+    font-family : "ChopinScript.otf";
+    src : url('ChopinScript.otf');
 }
+
+/* ====================== CONTENU GENERAL ====================== */
+
+body
+{
+	background-color: #383838;
+}
+
+/* ====================== BARRE DE MENU DEROULANT HORIZONTAL ====================== */
+
+#main_menu, #main_menu ul/* Liste */ 
+{
+	padding:0;/* pas de marge intérieure */
+	margin:0;/* ni extérieure */
+	list-style:none;/* Supprime le style par défaut de la liste */
+	text-align:left;/* Met à gauche le texte qui se trouve dans la liste */
+	font-family:"ChopinScript.otf", arial;
+}
+
+#main_menu li
+{
+	display:inline-block;/* Place les liens du menu horizontalement */
+	position:relative;
+	border-radius:8px 8px 0 0;/* Arrondir les coins supérieurs des boutons du menu déroulant */
+	text-align: center;
+}
+
+#main_menu ul li
+{
+	display:inherit;/* Enlève ce comportement pour les liens du sous menu */
+	border-radius:0;
+}
+
+#main_menu ul li:last-child, #menu_albums
+{
+	border-radius:0 0 8px 8px;/* Le dernier élément (de chaque menu déroulant) a les coins inférieurs arrondis */
+}
+/* =================AAAAAAAAAAAAAAAAA========================== */
+#main_menu ul
+{
+	position:absolute;
+	max-height:0;
+	left: 0;
+	right: 0;
+	overflow:hidden;
+	-moz-transition: .8s all .3s;
+	-webkit-transition: .8s all .3s;
+	transition: .8s all .3s;
+}
+/* =========================================== */
+#main_menu li:hover ul
+{
+	max-height:15em;
+}
+
+/* background des liens menus */
+#main_menu li:first-child, #main_menu li:nth-child(2), 
+#main_menu li:nth-child(3),
+#main_menu>li:nth-child(4), #main_menu>li:last-child
+{
+	background-color: #000;
+	background-image:-webkit-linear-gradient(top, #000 0%, #383838 100%);
+	background-image:linear-gradient(to bottom, #000 0%, #383838 100%);
+}
+
+#main_menu>li:nth-child(4), #main_menu>li:last-child
+{
+	float: right;
+}
+
+/* background des liens sous menus */
+#main_menu li:first-child li, #main_menu li:nth-child(2) li,
+#main_menu li:nth-child(3) li
+{
+	background:#000;
+}
+
+/* background des liens menus et sous menus au survol */
+#main_menu li:first-child:hover, #main_menu li:first-child li:hover,
+#main_menu li:nth-child(2):hover, #main_menu li:nth-child(2) li:hover,
+#main_menu li:nth-child(3):hover, #main_menu li:nth-child(3) li:hover,
+#main_menu li:nth-child(4):hover, #main_menu li:last-child:hover/* Colorie en blanc les liens "Connexion" et "s'inscrire" dans le menu, au survol de la souris */
+{
+	background:#FFF;
+}
+
+#main_menu a/* liens */
+{
+	text-decoration:none;
+	display:block;
+	padding:8px 32px;
+	color:#fff;
+}
+
+#main_menu ul a
+{
+	padding:8px 0;
+}
+
+#main_menu li:hover li a, #menu_bandmaster li a:hover 
+{
+	color:#fff;
+	text-transform:inherit;
+}
+
+#main_menu li:hover a, #main_menu li li:hover a
+{
+	color:#000;
+}
+
+/* ====================== MENU DES CHEFS D'ORCHESTRE ====================== */
+
+#menu_bandmaster li 
+{
+	display: inline;
+	font-size: 12px;/* Pour réduire la taille des mots clés trop longs */
+	font-weight: bold;
+	margin: auto;
+	position: relative;
+}
+/*
+#menu_bandmaster li a 
+{
+	width: 100%;
+}
+
+#menu_bandmaster li:hover ul 
+{
+	display:block;
+	width: 100%;
+	left: auto;
+}
+
+#menu_bandmaster li:hover ul li:hover
+{
+position: absolute;
+	padding: 5px;
+}*/
+
+/* ====================== IMAGE ====================== */
+
+img{border:0}
+img{max-width:100%!important}

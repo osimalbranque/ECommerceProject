@@ -7,19 +7,24 @@
  */
 
 /**
- * Description of Home
+ * Description of Account
  *
- * @author osimalbranque
+ * @author Osiris
  */
-class Home extends CI_Controller
+class Account extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
     }
     
-    public function index() 
+    public function Register()
     {
-        $this->load->view('index');
+        
+    }
+    
+    public function Login()
+    {
+        
     }
 }

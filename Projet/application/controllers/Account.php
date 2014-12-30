@@ -31,7 +31,7 @@ class Account extends CI_Controller
                    array('field' => 'subscriber_login',
                          'label' => 'Login',
                          'rules' => 'required'),
-                   array('field' => 'subscriber_login',
+                   array('field' => 'subscriber_password',
                          'label' => 'Mot de passe',
                          'rules' => 'required|min_length[6]'),
                    array('field' => 'subscriber_email',
@@ -55,5 +55,21 @@ class Account extends CI_Controller
     
     public function Login()
     {
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('form_validation');
+        
+        $config = array(
+                   array('field' => 'subscriber_login',
+                         'label' => 'Login',
+                         'rules' => 'required'),
+                   array('field' => 'subscriber_password',
+                         'label' => 'Mot de passe',
+                         'rules' => 'required|min_length[6]'),
+         );
+        
+        if ($this->form_validation->run() == FALSE)
+                $this->load->view('Account/login');
+        else
+                $this->load->view('Account/login_state');
     }
 }

@@ -16,37 +16,29 @@ and open the template in the editor.
 	</style>
     </head>
     <body>
-            <!--<div class="row">
-                <nav>
-                    <p>Rechercher par : </p>
-                    <p>
-                        <ul>
-                            Musicien
-                            <li>Nom</li>
-                            <li>Prénom</li>
-                        </ul>    
-                    </p> 
-                    <p>Instrument</p>
-                    <p>Date de parution</p>
-                    <p>Inscription</p>
-                    <p>Connexion</p>
-                </nav>
-            </div>-->
+        <div class="container">
             <ul id="main_menu">
 		<li><a href="#">Orchestre</a>
 			<ul>
-				<li><a href="orchestra.php">Tous les orchestres</a></li>
-				<li class="container">
-					<div id="menu_bandmaster">
-						<a href="bandmaster.php">Tous les chefs d'orchestre</a>
-						<ul>
-							<li><a href="A">A</a></li>
-							<li><a href="#">.</a></li>
-							<li><a href="#">.</a></li>
-							<li><a href="#">.</a></li>
-							<li><a href="Z">Z</a></li>
-						</ul>
-					</div>
+				<li>Les orchestres
+					<ul id="menu_orchestra">
+						<li><a href="orchestra.php">Tous</a></li>
+						<li><a href="A">A</a></li>
+						<li><a href="#">.</a></li>
+						<li><a href="#">.</a></li>
+						<li><a href="#">.</a></li>
+						<li><a href="Z">Z</a></li>
+					</ul>
+				</li>
+				<li>Les chefs d'orchestre
+					<ul id="menu_bandmaster">
+						<li><a href="bandmaster.php">Tous</a></li>
+						<li><a href="A">A</a></li>
+						<li><a href="#">.</a></li>
+						<li><a href="#">.</a></li>
+						<li><a href="#">.</a></li>
+						<li><a href="Z">Z</a></li>
+					</ul>
 				</li>
 			</ul>
 		</li>
@@ -62,13 +54,11 @@ and open the template in the editor.
 		<li><a href="#">Albums</a>
 			<ul id="menu_albums">
 				<li><a href="#">Tous les albums</a></li>
-				
-					<li><a href="#">A</a></li>
-					<li><a href="#">.</a></li>
-					<li><a href="#">.</a></li>
-					<li><a href="#">.</a></li>
-					<li><a href="#">Z</a></li>
-				
+				<li><a href="#">A</a></li>
+				<li><a href="#">.</a></li>
+				<li><a href="#">.</a></li>
+				<li><a href="#">.</a></li>
+				<li><a href="#">Z</a></li>
 			</ul>
 		</li>
 		<li>
@@ -77,7 +67,10 @@ and open the template in the editor.
 		<li>
 			<a href="connection.php">Connexion</a>
 		</li>
-	</ul>			
+	</ul>		
 	<img src="background.jpg" alt="First slide">
+        </img>
+            <?php echo base_url(); ?>
+        </div>
     </body>
 </html>

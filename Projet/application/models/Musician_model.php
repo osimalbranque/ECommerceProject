@@ -22,17 +22,6 @@ class Musician_model extends CI_Model
         parent::__construct();
     }
     
-    public function getMusicianPhoto($musician_code)
-    {
-        $query = "SELECT Musicien.Photo
-                  FROM Musicien
-                  WHERE Musicien.Code_Musicien = :code";
-        
-        $this->stmt = $this->db->conn_id->prepare($query);
-        
-        return $this->db->query($query, [':code' => $musician_code])->result();
-    }
-    
     public function getComposersNameBeginningBy($initial)
     {
         $query = "SELECT Musicien.Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)'), COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)'), Musicien.Photo

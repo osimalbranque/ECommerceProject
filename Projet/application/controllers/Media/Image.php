@@ -17,4 +17,12 @@ class Image extends CI_Controller
     {
         parent::__construct();
     }
+    
+    public function Musician($code)
+    {
+        $this->load->model('Media/Image_model');
+        $data['lob'] = $this->Image_model->getMusicianImage($code);
+       // echo $data['lob'];
+       $this->load->view('Media/image.php', $data);
+    }
 }

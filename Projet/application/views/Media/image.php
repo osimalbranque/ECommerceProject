@@ -1,5 +1,5 @@
 <?php
-$image = pack("H*", $lob);
+//$image = pack("H*", $lob);
 header("Content-Type: image/jpeg");
-echo $image;
+echo $lob;
 ?>

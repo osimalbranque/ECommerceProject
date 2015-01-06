@@ -44,11 +44,11 @@ and open the template in the editor.
 		</li>
 		<li><a href="#">Rechercher par</a>
 			<ul>
-				<li><a href="<?php echo site_url('Musician/Composer'); ?>">Compositeur</a></li>
+				<li><a href="#">Compositeur</a></li>
 				<li><a href="#">Date de parution</a></li>
 				<li><a href="#">Genre</a></li>
 				<li><a href="#">Instrument</a></li>
-				<li><a href="<?php echo site_url('Musician/Singer'); ?>">Interprète</a></li>
+				<li><a href="#">Interprète</a></li>
 			</ul>
 		</li>
 		<li><a href="#">Albums</a>
@@ -65,12 +65,35 @@ and open the template in the editor.
 			<a href="registration.php">S'inscrire</a>
 		</li>
 		<li>
-			<a href="<?php echo site_url('Account/login'); ?>">Connexion</a>
+			<a href="connection.php">Connexion</a>
 		</li>
 	</ul>		
 	<img src="background.jpg" alt="First slide">
         </img>
             <?php echo base_url(); ?>
         </div>
+        
+        <section>
+            <form method="post" action="<?php echo site_url('index.php/Musician/Singer');?>">
+                <input type="text" name="initial" id="initial" maxlength="1" />
+                <input type="submit" value="Rechercher" />
+            </form>
+            <?php
+                if(isset($data))
+                {
+                    foreach($data->result_array() as $row)
+                    {
+                        echo '<div class="musician_info">';
+                        echo '<img src="'
+                              .site_url('index.php/Media/Image/Musician')
+                              .'/'
+                              .$row['Code_Musicien']
+                              .'" alt ="" /> <br />';
+                        echo $row['Nom_Musicien']. ' '. $row[utf8_decode('Prénom_Musicien')];
+                        echo '</div>';
+                    }
+                }
+            ?>
+        </section>
     </body>
 </html>

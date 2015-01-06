@@ -128,3 +128,27 @@ img
 {
 	max-width:100%!important
 }
+
+/* ====================== SECTION ====================== */
+
+section
+{
+    color: white;
+}
+
+.musician_info
+{
+    display: inline-block;
+}
+
+.musician_info img
+{
+    max-width: 100%;
+    height: auto;
+    box-sizing: border-box;
+}
+
+input
+{
+    color: black;
+}

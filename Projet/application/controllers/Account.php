@@ -30,7 +30,7 @@ class Account extends CI_Controller
                          'label' => 'Prénom'),
                    array('field' => 'subscriber_login',
                          'label' => 'Login',
-                         'rules' => 'required'),
+                         'rules' => 'required|uniqueLogin'),
                    array('field' => 'subscriber_password',
                          'label' => 'Mot de passe',
                          'rules' => 'required|min_length[6]'),
@@ -46,11 +46,31 @@ class Account extends CI_Controller
                    array('field' => 'subscriber_country',
                          'label' => 'Code pays'),
          );
+         
+         $this->form_validation->set_rules($config);
         
         if ($this->form_validation->run() == FALSE)
                 $this->load->view('Account/register');
         else
+        {
+                $this->load->model('Account_model');
+                
+                $fields = array('subscriber_name', 
+                         'subscriber_surname', 
+                         'subscriber_login', 
+                         'subscriber_password',
+                        'subscriber_email',
+                        'subscriber_address', 
+                        'subscriber_postcode',
+                        'subscriber_town', 
+                        'subscriber_country');
+                foreach($fields as $field)
+                    if($this->input->post($field) != false)
+                        $fields[$field] = $this->input->post($field);
+                $this->Account_model->insertSubscriber($fields);
+                
                 $this->load->view('Account/register_state');
+        }
     }
     
     public function Login()
@@ -67,9 +87,21 @@ class Account extends CI_Controller
                          'rules' => 'required|min_length[6]'),
          );
         
+        $this->form_validation->set_rules($config);
+        
         if ($this->form_validation->run() == FALSE)
                 $this->load->view('Account/login');
         else
                 $this->load->view('Account/login_state');
+    }
+    
+    private function uniqueLogin($login)
+    {
+        if(!isset($this->Account_model))
+            $this->load->model('Account_model');
+        $nb_logins = $this->Account_model->loginNumber($login);
+        if($nb_logins != 0)
+            $this->form_validation->set_message('uniqueLogin', 'Le login existe déjà !');
+        return $nb_logins == 0;
     }
 }

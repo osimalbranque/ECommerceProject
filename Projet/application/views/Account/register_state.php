@@ -7,7 +7,13 @@ and open the template in the editor.
 <html>
     <head>
         <meta charset="UTF-8">
-        <title></title>
+        <title>Bienvenue sur le site de ClassicoFolies</title>
+        <link rel="stylesheet" type="text/css" href="<?php echo css_url('bootstrap'); ?>" />
+        <link rel="stylesheet" type="text/css" href="<?php echo css_url('stylesheet');?>" />
+	<link rel="icon" href="../../assets/img/favicon.jpg">
+        <style type="text/css">
+		li.container {list-style: none; display: inline}
+	</style>
     </head>
     <body>
         <ul id="main_menu">

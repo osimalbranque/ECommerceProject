@@ -16,6 +16,7 @@ and open the template in the editor.
 	</style>
     </head>
     <body>
+<<<<<<< HEAD
         <ul id="main_menu">
 		<li><a href="#">Orchestre</a>
 			<ul>
@@ -67,7 +68,7 @@ and open the template in the editor.
 			<a href="<?php echo site_url('Account/login'); ?>">Connexion</a>
 		</li>
 	</ul>
-        
+        <?php require_once('../General/dropdown.php'); ?>
         <section>
         <?php echo validation_errors(); ?>
         <?php echo form_open('index.php/Account/Register'); ?>

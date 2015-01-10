@@ -16,15 +16,19 @@ class Account extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
+        
+        $this->load->view('General/header');
+        if(!$this->session->userdata('subscriber_id'))
+            $this->load->view('General/dropdown');
+        else
+            $this->load->view('General/connected_dropdown');
     }
     
     public function Register()
     {
          $this->load->helper(array('form', 'url'));
          $this->load->library('form_validation');
-         
-         $this->load->view('General/header');
-        $this->load->view('General/dropdown');
          
          $config = array(
                    array('field' => 'subscriber_name',
@@ -82,10 +86,7 @@ class Account extends CI_Controller
     {
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
-        
-        $this->load->view('General/header');
-        $this->load->view('General/dropdown');
-        
+
         $config = array(
                    array('field' => 'subscriber_login',
                          'label' => 'Login',
@@ -111,6 +112,12 @@ class Account extends CI_Controller
                                                         ->post('subscriber_login'))[utf8_decode('Code_Abonné')]);
                 $this->load->view('Account/login_state');
         }
+    }
+    
+    public function Logout()
+    {
+        $this->session->sess_destroy();
+        $this->load->view('Account/logout');
     }
     
     public function rightPassword($password)

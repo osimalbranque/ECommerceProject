@@ -1,9 +1,9 @@
-<?php require_once('header.php') ?>
+
 <body>
     <div class="row"></class>
     <ul id="main_menu">
         <li class="col-xs-8 col-sm-12 col-md-12 col-lg-12">
-                <a href="<?php require_once(site_url('index.php/General/dropdown')); ?>">Accueil</a>
+                <a href="<?php site_url('index.php/General/dropdown'); ?>">Accueil</a>
         </li>
         <li><a href="#">Liste alphabétique</a>
             <ul>
@@ -93,6 +93,6 @@
             <a href="<?php echo site_url('Cart/Purchases'); ?>">Mes achats</a>
         </li>
         <li>
-            <a href="<?php echo site_url('Account/Logout'); ?>">Déconnexion</a>
+            <a href="<?php echo site_url('index.php/Account/Logout'); ?>">Déconnexion</a>
         </li>
     </ul>

@@ -7,28 +7,31 @@
  */
 
 /**
- * Description of Home
+ * Description of Controller
  *
- * @author osimalbranque
+ * @author osi
  */
-
-class Home extends CI_Controller
+class Controller extends CI_Controller
 {
     public function __construct()
     {
         parent::__construct();
-        
+    }
+    
+    public function loadPage()
+    {
         $this->load->library('session');
+        $this->load->view('header');
         
-        $this->load->view('General/header');
+        loadMenu();
+    }
+    
+    protected function loadMenu()
+    {
         if(!$this->session->userdata('subscriber_id'))
             $this->load->view('General/connected_dropdown');
         else
             $this->load->view('General/dropdown');
     }
     
-    public function index() 
-    {
-        $this->load->view('index');
-    }
 }

@@ -16,12 +16,18 @@ class Musician extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        
+        $this->load->library('session');
+        
+        $this->load->view('General/header');
+        if(!$this->session->userdata('subscriber_id'))
+            $this->load->view('General/connected_dropdown');
+        else
+            $this->load->view('General/dropdown');
     }
     
     public function Composer()
     {
-        $this->load->view('General/header');
-        $this->load->view('General/dropdown');
         if(!$this->input->post('initial'))
         {
             $this->load->view('Musician/composers');

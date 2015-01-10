@@ -1,3 +1,4 @@
+<?php require_once('header.php') ?>
 <body>
     <div class="row"></class>
     <ul id="main_menu">

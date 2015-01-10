@@ -95,3 +95,4 @@
             <a href="<?php echo site_url('Account/Login'); ?>">Connexion</a>
         </li>
     </ul>
+    <?php require_once('carousel.php'); ?>

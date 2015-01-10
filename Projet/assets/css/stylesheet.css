@@ -81,7 +81,8 @@ body
 #main_menu li:first-child:hover, #main_menu li:first-child li:hover,
 #main_menu li:nth-child(2):hover, #main_menu li:nth-child(2) li:hover,
 #main_menu li:nth-child(3):hover, #main_menu li:nth-child(3) li:hover,
-#main_menu li:nth-child(4):hover, #main_menu li:last-child:hover/* Colorie en blanc les liens "Connexion" et "s'inscrire" dans le menu, au survol de la souris */
+#main_menu li:nth-child(4):hover, #main_menu li:nth-child(4) li:hover,
+#main_menu li:nth-child(5):hover, #main_menu li:last-child:hover/* Colorie en blanc les liens "Connexion" et "s'inscrire" dans le menu, au survol de la souris */
 {
 	background:#FFF;/* Blanc */
 }
@@ -116,6 +117,37 @@ body
 	font-weight: bold;
 	margin: auto;
 	position: relative;
+}
+
+#menu3 li:hover ul li{
+	display:inline-block;
+ }
+ 
+ #menu3 li:hover ul li ul{
+	display:none;
+ }
+  #menu3 li:hover ul li:hover ul{
+	display:inline-block;
+ }
+ 
+ #menu3 li:hover ul:hover li:hover{
+	display:inline-block;
+ }
+ 
+ #menu3 li ul {
+ position:absolute;
+ left:100%;
+ top: 0px;
+ 
+ }
+
+#footer {
+    background-color:white;
+    color:black;
+    clear:both;
+    text-align:center;
+    padding:5px;
+    bottom: 0px; 
 }
 
 /* ====================== IMAGE ====================== */

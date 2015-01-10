@@ -1,7 +1,7 @@
 @font-face/* Police d'écriture */
 {
     font-family : "ChopinScript.otf";
-    src : url('ChopinScript.otf');
+    src : url('../fonts/ChopinScript.otf');
 }
 
 /* ====================== CONTENU GENERAL ====================== */

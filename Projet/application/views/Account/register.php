@@ -22,7 +22,8 @@ and open the template in the editor.
 			<ul>
 				<li>Les orchestres
 					<ul id="menu_orchestra">
-						<li><a href="orchestra.php">Tous</a></li>
+		        <ul id="main_menu">
+				<li><a href="orchestra.php">Tous</a></li>
 						<li><a href="A">A</a></li>
 						<li><a href="#">.</a></li>
 						<li><a href="#">.</a></li>

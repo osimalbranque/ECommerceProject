@@ -10,8 +10,7 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <?php require_once('../General/dropdown.php'); ?>
-        
+        <?php require_once(site_url('index.php/General/dropdown')); ?>
         <section>
         <?php echo validation_errors(); ?>
         <?php echo form_open('login'); ?>

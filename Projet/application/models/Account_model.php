@@ -33,7 +33,7 @@ class Account extends CI_Model
         foreach($fields as $key => $field)
         {
             if(array_key_exists($field, $datas))
-                    $this->db->set($key, $datas[$field]);
+                    $this->db->set($key, $datas[$field]); // etest
         }
         
         $this->db->insert('Abonné');

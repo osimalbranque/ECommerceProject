@@ -90,9 +90,9 @@
         <li><a href="../Instrument/instruments.php">Instruments</a></li>
         <li><a href="../Kind/kind.php">Genres</a></li>
         <li>
-            <a href="<?php echo site_url('Account/Register'); ?>">S'inscrire</a>
+            <a href="<?php echo site_url('Cart/Purchases'); ?>">Mes achats</a>
         </li>
         <li>
-            <a href="<?php echo site_url('Account/Login'); ?>">Connexion</a>
+            <a href="<?php echo site_url('Account/Logout'); ?>">Déconnexion</a>
         </li>
     </ul>

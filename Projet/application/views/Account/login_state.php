@@ -10,59 +10,12 @@ and open the template in the editor.
         <title></title>
     </head>
     <body>
-        <ul id="main_menu">
-		<li><a href="#">Orchestre</a>
-			<ul>
-				<li><a href="orchestra.php">Tous les orchestres</a></li>
-				<li class="container">
-					<div id="menu_bandmaster">
-						<a href="bandmaster.php">Tous les chefs d'orchestre</a>
-						<ul>
-							<li><a href="A">A</a></li>
-							<li><a href="#">.</a></li>
-							<li><a href="#">.</a></li>
-							<li><a href="#">.</a></li>
-							<li><a href="Z">Z</a></li>
-						</ul>
-					</div>
-				</li>
-			</ul>
-		</li>
-		<li><a href="#">Rechercher par</a>
-			<ul>
-				<li><a href="#">Compositeur</a></li>
-				<li><a href="#">Date de parution</a></li>
-				<li><a href="#">Genre</a></li>
-				<li><a href="#">Instrument</a></li>
-				<li><a href="#">Interprète</a></li>
-			</ul>
-		</li>
-		<li><a href="#">Albums</a>
-			<ul id="menu_albums">
-				<li><a href="#">Tous les albums</a></li>
-				
-					<li><a href="#">A</a></li>
-					<li><a href="#">.</a></li>
-					<li><a href="#">.</a></li>
-					<li><a href="#">.</a></li>
-					<li><a href="#">Z</a></li>
-				
-			</ul>
-		</li>
-		<li>
-			<a href="registration.php">S'inscrire</a>
-		</li>
-		<li>
-			<a href="connection.php">Connexion</a>
-		</li>
-	</ul>
-        
+        <?php require_once('../General/dropdown.php'); ?>        
         <section>
             <h3>Connexion réussie !</h3>
-        
-        <p><?php echo anchor('login', "Un des deux champs n'a pas été renseigné"); 
-            ?>
-        </p>
+            <p>
+                <?php echo anchor('login', "Un des deux champs n'a pas été renseigné"); ?>
+            </p>
         </section>
     </body>
 </html>

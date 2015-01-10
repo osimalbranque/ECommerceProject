@@ -31,4 +31,9 @@ class Home extends CI_Controller
     {
         $this->load->view('index');
     }
+    
+    public function About()
+    {
+        $this->load->view('General/about');
+    }
 }

@@ -1,3 +1,13 @@
+body
+{background: -moz-linear-gradient(top, #ffffff 1%, #eaeaea 100%);
+ background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea));
+ background: -webkit-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+ background: -o-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+ background: -ms-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+ background: linear-gradient(#ffffff 1%,#eaeaea 100%);
+ 
+ }
+
 @font-face/* Police d'écriture */
 {
     font-family : "ChopinScript.otf";

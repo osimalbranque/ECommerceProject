@@ -117,6 +117,7 @@ class Account extends CI_Controller
     public function Logout()
     {
         $this->session->sess_destroy();
+        $this->session->set_userdata(array('subscriber_id' => ''));
         $this->load->view('Account/logout');
     }
     

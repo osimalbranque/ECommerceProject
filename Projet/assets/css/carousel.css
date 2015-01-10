@@ -41,6 +41,7 @@
  
 .carousel.vertical .carousel-control {
     width: 100%;
+    height: 150px;
     bottom: inherit;
     top: inherit;
 }

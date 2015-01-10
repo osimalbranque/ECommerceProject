@@ -6,20 +6,20 @@
                 <ul>
                     <li><a href="#">Albums</a>
                         <ul id="menu3">
-                            <li><a href="../Musician/albums.php">Tous les albums</a></li>
+                            <li><a href="../Album/albums.php">Tous les albums</a></li>
                                 <?php
                                     foreach (range('A', 'Z') as $letter) {
-                                        echo '<li><a href="albums.php?lettre='.$letter.'">'.$letter.'</a></li>"\n"';
+                                        echo '<li><a href="../Album/albums.php?lettre='.$letter.'">'.$letter.'</a></li>"\n"';
                                     }
                                 ?>
                         </ul>
                     </li>
                     <li>Chefs d'orchestre
                         <ul id="menu3">
-                            <li><a href="../Orchestra/bandmaster.php">Tous</a></li>
+                            <li><a href="../Musician/bandmaster.php">Tous</a></li>
                             <?php
                                 foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="bandmaster.php?lettre='.$letter.'">'.$letter.'</a></li>"\n"';
+                                    echo '<li><a href="../Musician/bandmaster.php?lettre='.$letter.'">'.$letter.'</a></li>"\n"';
                                 }
                             ?>
                         </ul>
@@ -29,7 +29,7 @@
                             <li><a href="<?php echo site_url('Musician/Composer'); ?>">Tous les compositeurs</a></li>
                             <?php
                                 foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="../Orchestra/orchestra.php?lettre='.$letter.'">'.$letter.'</a></li>';
+                                    echo '<li><a href="../Musician/composers.php?lettre='.$letter.'">'.$letter.'</a></li>';
                                 }
                             ?>
                         </ul>
@@ -39,17 +39,17 @@
                             <li><a href="<?php echo site_url('Musician/Singer'); ?>">Tous les interprètes</a></li>
                             <?php
                                 foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="../Orchestra/orchestra.php?lettre='.$letter.'">'.$letter.'</a></li>';
+                                    echo '<li><a href="../Musician/singer.php?lettre='.$letter.'">'.$letter.'</a></li>';
                                 }
                             ?>
                         </ul>
                     </li>
                     <li>Orchestres
                         <ul id="menu3">
-                            <li><a href="../Orchestra/orchestra.php">Tous les orchestres</a></li>
+                            <li><a href="<?php echo site_url('Musician/Orchestra'); ?>">Tous les orchestres</a></li>
                             <?php
                                 foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="orchestra.php?lettre='.$letter.'">'.$letter.'</a></li>';
+                                    echo '<li><a href="../Musician/orchestra.php?lettre='.$letter.'">'.$letter.'</a></li>';
                                 }
                             ?>
                         </ul>

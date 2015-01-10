@@ -9,40 +9,40 @@
             <ul>
                 <li><a href="#">Albums</a>
                     <ul id="menu_albums">
-                        <li><a href="../Musician/albums.php">Tous les albums</a></li>
+                        <li><a href="<?php echo site_url('index.php/Album/Everything'); ?>">Tous les albums</a></li>
                             <?php
                                 foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="albums.php?lettre='.$letter.'">'.$letter.'</a></li>"\n"';
+                                    echo '<li><a href="'.site_url('index.php/Album/Albums'.'/'.$letter).'">'.$letter.'</a></li>"\n"';
                                 }
                             ?>
                     </ul>
                 </li>
                 <li>Chefs d'orchestre
                     <ul id="menu_bandmaster">
-                        <li><a href="../Orchestra/bandmaster.php">Tous</a></li>
+                        <li><a href="<?php echo site_url('index.php/Musician/AllBandmasters'); ?>">Tous</a></li>
                         <?php
                             foreach (range('A', 'Z') as $letter) {
-                                echo '<li><a href="bandmaster.php?lettre='.$letter.'">'.$letter.'</a></li>"\n"';
+                                echo '<li><a href="'.site_url('index.php/Musician/Bandmasters'.'/'.$letter).'">'.$letter.'</a></li>"\n"';
                             }
                         ?>
                     </ul>
                 </li>
                 <li>Compositeurs
                     <ul>    
-                        <li><a href="<?php echo site_url('Musician/Composer'); ?>">Tous les compositeurs</a></li>
+                        <li><a href="<?php echo site_url('index.php/Musician/AllComposers'); ?>">Tous les compositeurs</a></li>
                         <?php
                             foreach (range('A', 'Z') as $letter) {
-                                echo '<li><a href="../Orchestra/orchestra.php?lettre='.$letter.'">'.$letter.'</a></li>';
+                                echo '<li><a href="'.site_url('index.php/Musician/Composer').'/'.$letter.'">'.$letter.'</a></li>';
                             }
                         ?>
                     </ul>
                 </li>
                 <li>Interprètes
                     <ul>
-                        <li><a href="<?php echo site_url('Musician/Singer'); ?>">Tous les interprètes</a></li>
+                        <li><a href="<?php echo site_url('index.php/Musician/AllSingers'); ?>">Tous les interprètes</a></li>
                         <?php
                             foreach (range('A', 'Z') as $letter) {
-                                echo '<li><a href="../Orchestra/orchestra.php?lettre='.$letter.'">'.$letter.'</a></li>';
+                                echo '<li><a href="'.site_url('index.php/Musician/Singer').'/'.$letter.'">'.$letter.'</a></li>';
                             }
                         ?>
                     </ul>

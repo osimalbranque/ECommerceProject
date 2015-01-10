@@ -32,8 +32,25 @@ class Album extends CI_Controller
         $data = array();
         $data['data'] = $this->Album_model->getSamplesByAlbum($album_code);
         
-        $this->load->view('Album/album', $data);
+        $this->load->view('Album/album', $data);   
+    }
+    
+    public function Albums($letter)
+    {
+        $this->load->model('Album/Album_model');
+        $data = array();
+        $data['data'] = $this->Album_model->getAlbumsBeginningBy($letter);
         
+        $this->load->view('Album/everything', $data);
+    }
+    
+    public function Everything()
+    {
+        $this->load->model('Album/Album_model');
         
+        $data = array();
+        $data['data'] = $this->Album_model->getAllAlbums();
+        
+        $this->load->view('Album/everything', $data);
     }
 }

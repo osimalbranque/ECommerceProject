@@ -1,4 +1,4 @@
-<?php site_url('index.php/General/dropdown'); ?>
+<?php //site_url('index.php/General/dropdown'); ?>
 <h3>Comment nous contacter ?</h3>
 <p>
     Pour nous contacter, rien de plus simple :

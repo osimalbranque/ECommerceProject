@@ -18,6 +18,20 @@ class Album_model extends CI_Model
         parent::__construct();
     }
     
+    public function getAllAlbums()
+    {
+        $query = "SELECT Album.Code_Album, Album.Titre_Album, Album.Année_Album, Album.Pochette"
+                . " FROM Album";
+        return $this->db->query($query);
+    }
+    
+    public function getAlbumsBeginningBy($initial)
+    {
+        $query = "SELECT Album.Code_Album, Album.Titre_Album, Album.Année_Album, Album.Pochette"
+                . " FROM Album WHERE Album.Titre_Album LIKE ?";
+        return $this->db->query($query, array($initial.'%'));
+    }
+    
     public function getSamplesByAlbum($album_code)
     {
         $query = "SELECT Enregistrement.Code_Morceau, Enregistrement.Titre, Enregistrement.Prix"

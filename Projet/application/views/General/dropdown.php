@@ -5,55 +5,55 @@
             <li><a href="#">Liste alphabétique</a>
                 <ul>
                     <li><a href="#">Albums</a>
-                        <ul id="menu3">
-                            <li><a href="../Album/albums.php">Tous les albums</a></li>
-                                <?php
-                                    foreach (range('A', 'Z') as $letter) {
-                                        echo '<li><a href="../Album/albums.php?lettre='.$letter.'">'.$letter.'</a></li>"\n"';
-                                    }
-                                ?>
-                        </ul>
-                    </li>
+                    <ul id="menu_albums">
+                        <li><a href="<?php echo site_url('index.php/Album/Everything'); ?>">Tous les albums</a></li>
+                            <?php
+                                foreach (range('A', 'Z') as $letter) {
+                                    echo '<li><a href="'.site_url('index.php/Album/Albums'.'/'.$letter).'">'.$letter.'</a></li>"\n"';
+                                }
+                            ?>
+                    </ul>
+                </li>
                     <li>Chefs d'orchestre
-                        <ul id="menu3">
-                            <li><a href="../Musician/bandmaster.php">Tous</a></li>
-                            <?php
-                                foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="../Musician/bandmaster.php?lettre='.$letter.'">'.$letter.'</a></li>"\n"';
-                                }
-                            ?>
-                        </ul>
-                    </li>
+                    <ul id="menu_bandmaster">
+                        <li><a href="<?php echo site_url('index.php/Musician/AllBandmasters'); ?>">Tous</a></li>
+                        <?php
+                            foreach (range('A', 'Z') as $letter) {
+                                echo '<li><a href="'.site_url('index.php/Musician/Bandmasters'.'/'.$letter).'">'.$letter.'</a></li>"\n"';
+                            }
+                        ?>
+                    </ul>
+                </li>
                     <li>Compositeurs
-                        <ul id="menu3">    
-                            <li><a href="<?php echo site_url('Musician/Composer'); ?>">Tous les compositeurs</a></li>
-                            <?php
-                                foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="../Musician/composers.php?lettre='.$letter.'">'.$letter.'</a></li>';
-                                }
-                            ?>
-                        </ul>
-                    </li>
+                    <ul>    
+                        <li><a href="<?php echo site_url('index.php/Musician/AllComposers'); ?>">Tous les compositeurs</a></li>
+                        <?php
+                            foreach (range('A', 'Z') as $letter) {
+                                echo '<li><a href="'.site_url('index.php/Musician/Composer').'/'.$letter.'">'.$letter.'</a></li>';
+                            }
+                        ?>
+                    </ul>
+                </li>
                     <li>Interprètes
-                        <ul id="menu3">
-                            <li><a href="<?php echo site_url('Musician/Singer'); ?>">Tous les interprètes</a></li>
-                            <?php
-                                foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="../Musician/singer.php?lettre='.$letter.'">'.$letter.'</a></li>';
-                                }
-                            ?>
-                        </ul>
-                    </li>
+                    <ul>
+                        <li><a href="<?php echo site_url('index.php/Musician/AllSingers'); ?>">Tous les interprètes</a></li>
+                        <?php
+                            foreach (range('A', 'Z') as $letter) {
+                                echo '<li><a href="'.site_url('index.php/Musician/Singer').'/'.$letter.'">'.$letter.'</a></li>';
+                            }
+                        ?>
+                    </ul>
+                </li>
                     <li>Orchestres
-                        <ul id="menu3">
-                            <li><a href="<?php echo site_url('Musician/Orchestra'); ?>">Tous les orchestres</a></li>
-                            <?php
-                                foreach (range('A', 'Z') as $letter) {
-                                    echo '<li><a href="../Musician/orchestra.php?lettre='.$letter.'">'.$letter.'</a></li>';
-                                }
-                            ?>
-                        </ul>
-                    </li>
+                    <ul id="menu_orchestra">
+                        <li><a href="../Orchestra/orchestra.php">Tous les orchestres</a></li>
+                        <?php
+                            foreach (range('A', 'Z') as $letter) {
+                                echo '<li><a href="orchestra.php?lettre='.$letter.'">'.$letter.'</a></li>';
+                            }
+                        ?>
+                    </ul>
+                </li>
                 </ul>
             </li>
             <li><a href="about.php">A propos</a></li>

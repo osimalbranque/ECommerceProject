@@ -26,20 +26,20 @@ class Musician extends CI_Controller
             $this->load->view('General/dropdown');
     }
     
-    public function Composer()
+    public function AllComposers()
     {
-        if(!$this->input->post('initial'))
-        {
-            $this->load->view('Musician/composers');
-        }
-        else
-        {
-            $this->load->model('Musician/Composer_model');
-            $data = array();
-            $initial = $this->input->post('initial');
-            $data['data'] = $this->Composer_model->getComposersNamesBeginningBy($initial);
-            $this->load->view('Musician/composers', $data);
-        }
+        $this->load->model('Musician/Composer_model');
+        $data = array();
+        $data['data'] = $this->Composer_model->getAllComposers();
+        $this->load->view('Musician/composers', $data);
+    }
+    
+    public function Composer($initial)
+    {
+        $this->load->model('Musician/Composer_model');
+        $data = array();
+        $data['data'] = $this->Composer_model->getComposersNamesBeginningBy($initial);
+        $this->load->view('Musician/composers', $data);
     }
     
     public function About_Composer($composer_code)
@@ -50,19 +50,44 @@ class Musician extends CI_Controller
         $this->load->view('Musician/about_composer', $data);
     }
     
-    public function Singer()
+    public function AllSingers()
     {
-        if(!$this->input->post('initial'))
-        {
-            $this->load->view('Musician/singers');
-        }
-        else
-        {
+        $this->load->model('Musician/Singer_model');
+        $data = array();
+        $data['data'] = $this->Singer_model->getAllSingers();
+        $this->load->view('Musician/singers', $data);
+    }
+    
+    public function Singer($initial)
+    {
             $this->load->model('Musician/Singer_model');
             $data = array();
-            $initial = $this->input->post('initial');
             $data['data'] = $this->Singer_model->getSingersNamesBeginningBy($initial);
             $this->load->view('Musician/singers', $data);
-        }
+    }
+    
+    public function AllBandmasters()
+    {
+        $this->load->model('Musician/Bandmaster_model');
+        $data = array();
+        $data['data'] = $this->Bandmaster_model->getAllBandMasters();
+        $this->load->view('Musician/bandmaster', $data);
+    }
+    
+    public function Bandmasters($letter)
+    {
+        $this->load->model('Musician/Bandmaster_model');
+        $data = array();
+        $data['data'] = $this->Bandmaster_model->getBandMastersBeginningBy($letter);
+        $this->load->view('Musician/bandmaster', $data);
+    }
+    
+    public function AllOrchestra()
+    {
+        $this->load->model('Orchestra_model');
+        $data = array();
+        $data['data'] = $this->Orchestra_model->getAllOrchestra();
+        $this->load->view('Musician/orchestra', $data);
+        
     }
 }

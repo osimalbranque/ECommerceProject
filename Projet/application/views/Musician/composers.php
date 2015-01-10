@@ -1,8 +1,4 @@
         <section>
-            <form method="post" action="<?php echo site_url('index.php/Musician/Composer');?>">
-                <input type="text" name="initial" id="initial" maxlength="1" />
-                <input type="submit" value="Rechercher" />
-            </form>
             <?php
                 if(isset($data))
                 {

@@ -1,8 +1,15 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+        <section>
+            <?php
+                if(isset($data))
+                {
+                    foreach($data->result_array() as $row)
+                    {
+                        echo '<div class="orchestra_info">';
+                        echo $row['Nom_Orchestre'];
+                        echo '</div>';
+                    }
+                }
+            ?>
+        </section>
+    </body>
+</html>

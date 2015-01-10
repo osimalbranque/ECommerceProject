@@ -20,16 +20,20 @@ class Orchestra_model extends CI_Model
         parent::__construct();
     }
     
+    public function getAllOrchestra()
+    {
+        $query = "SELECT Orchestre.Code_Orchestre, Orchestre.Nom_Orchestre"
+                . " FROM Orchestre";
+        
+        return $this->db->query($query);
+    }
+    
     public function getOrchestraBeginningBy($initial)
     {
-        $query = "SELECT Musicien.Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)'), COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)'), Musicien.Photo
-                  FROM Musicien
-                  INNER JOIN Direction ON Musicien.Code_Musicien = Direction.Code_Musicien
-                  INNER JOIN Orchestra ON Direction.Code_Orchestre = Orchestre.Code_Orchestre
-                  WHERE Musicien.Nom_Musicien LIKE :initial'
-                  GROUP BY Musicien.Code_Musicien, Musicien.Nom_Musicien, Musicien.Prénom_Musicien, Musicien.Photo
-                  ORDER BY Musicien.Nom_Musicien";
+        $query = "SELECT Orchestre.Code_Orchestre, Orchestre.Nom_Orchestre"
+                . " FROM Orchestre"
+                . " WHERE Orchestre.Nom_Orchestre LIKE ?";
         
-        return $this->db->query($query, [':initial' => $initial.'%']);
+        return $this->db->query($query, array("'".$initial."%'"));
     }
 }

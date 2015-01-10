@@ -19,7 +19,7 @@ function js_url($name)
 
 function img_url($name)
 {
-    return base_url() . 'assets/images/' . $name;
+    return base_url() . 'assets/img/' . $name;
 }
 
 ?>

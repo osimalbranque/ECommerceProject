@@ -20,6 +20,17 @@ class Bandmaster_model extends CI_Model
         parent::__construct();
     }
     
+    public function getAllBandMasters()
+    {
+        $query = "SELECT Musicien.Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)'), COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)'), Musicien.Photo
+                  FROM Musicien
+                  INNER JOIN Direction ON Musicien.Code_Musicien = Direction.Code_Musicien
+                  GROUP BY Musicien.Code_Musicien, Musicien.Nom_Musicien, Musicien.Prénom_Musicien, Musicien.Photo
+                  ORDER BY Musicien.Nom_Musicien";
+        
+        return $this->db->query($query);
+    }
+    
     public function getBandMastersBeginningBy($initial)
     {
         $query = "SELECT Musicien.Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)'), COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)'), Musicien.Photo

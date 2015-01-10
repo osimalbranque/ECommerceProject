@@ -17,6 +17,18 @@ class Singer_model extends CI_Model{
         parent::__construct();
     }
     
+    public function getAllSingers()
+    {
+        $query = "SELECT Musicien.Code_Musicien Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)') Nom_Musicien, COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)') Prénom_Musicien
+                 FROM Musicien
+                 INNER JOIN Interpréter ON Musicien.Code_Musicien = Interpréter.Code_Musicien
+                 GROUP BY Musicien.Code_Musicien, Musicien.Nom_Musicien, Musicien.Prénom_Musicien
+                 ORDER BY Musicien.Nom_Musicien";
+        
+        $data = $this->db->query($query);
+        return $data;
+    }
+    
     public function getSingersNamesBeginningBy($initial)
     {
         $query = "SELECT Musicien.Code_Musicien Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)') Nom_Musicien, COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)') Prénom_Musicien

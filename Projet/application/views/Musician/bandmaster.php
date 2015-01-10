@@ -1,5 +1,3 @@
-
-<?php require_once('../General/dropdown.php'); ?>
         <section>
             <form method="post" action="<?php echo site_url('index.php/Musician/Bandmaster');?>">
                 <input type="text" name="initial" id="initial" maxlength="1" />
@@ -23,5 +21,4 @@
             ?>
         </section>
     </body>
-	<?php require_once('../General/footer.php'); ?>
 </html>

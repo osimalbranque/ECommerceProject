@@ -6,10 +6,10 @@
   </ol>
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <img src="../../../assets/img/violons.jpg" alt="Picture with violons">
+        <img src="<?php echo img_url('violons.jpg'); ?>" alt="Picture with violons">
     </div>
     <div class="item">
-      <img src="../../../assets/img/musicians.jpg" alt="Pisture with musicians">
+      <img src="<?php echo img_url('musicians.jpg'); ?>"" alt="Pisture with musicians">
     </div>
   </div>
   <a class="left carousel-control" href="#carousel-generic" role="button" data-slide="prev">

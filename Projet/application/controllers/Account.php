@@ -35,7 +35,7 @@ class Account extends CI_Controller
                           'rules' => 'required'),
                    array('field' => 'subscriber_login',
                          'label' => 'Login',
-                         'rules' => 'required|uniqueLogin'),
+                         'rules' => 'required|callback_uniqueLogin'),
                    array('field' => 'subscriber_password',
                          'label' => 'Mot de passe',
                          'rules' => 'required|min_length[6]'),
@@ -108,7 +108,7 @@ class Account extends CI_Controller
                                              $this->Account_model
                                                   ->getSubscriberCode
                                                  ($this->input
-                                                        ->post('subscriber_login'))['Abonné.Code_Abonné']);
+                                                        ->post('subscriber_login'))[utf8_decode('Code_Abonné')]);
                 $this->load->view('Account/login_state');
         }
     }
@@ -127,7 +127,7 @@ class Account extends CI_Controller
                 return $passwdFit == 1;
             }
         }
-        return false;
+        //return false;
     }
     
     public function existingLogin($login)

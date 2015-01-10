@@ -41,7 +41,7 @@ class Musician extends CI_Controller
         $this->load->model('Musician/Composer_model');
         $data = array();
         $data['data'] = $this->Composer_model->getAlbumsFromComposer($composer_code);
-        $this->load->view('Musician/about_composer/'.$composer_code, $data);
+        $this->load->view('Musician/about_composer', $data);
     }
     
     public function Singer()

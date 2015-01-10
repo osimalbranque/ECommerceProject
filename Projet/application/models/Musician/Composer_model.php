@@ -42,17 +42,16 @@ class Composer_model extends CI_Model
     
     public function getAlbumsFromComposer($composer_code)
     {
-        $query = "SELECT Album.Code_Album, Album.Titre_Album, Album.Année_Album, Album.Pochette"
-                . " FROM Album"
-                . " INNER JOIN Disque ON Disque.Code_Album = Album.Code_Album"
-                . " INNER JOIN Composition_Disque ON Disque.Code_Disque = Composition_Disque.Code_Disque"
-                . " INNER JOIN Enregistrement ON Enregistrement.Code_Morceau = Composition_Disque.Code_Morceau"
-                . " INNER JOIN Composition ON Enregistrement.Code_Composition = Composition.Code_Composition"
-                . " INNER JOIN Composition_Oeuvre ON Composition_Oeuvre.Code_Composition = Composition.Code_Composition"
-                . " INNER JOIN Oeuvre ON Oeuvre.Code_Oeuvre = Composition_Oeuvre.Code_Oeuvre"
-                . " INNER JOIN Composer ON Composer.Code_Oeuvre = Oeuvre.Code_Oeuvre"
-                . " INNER JOIN Musicien ON Composer.Code_Musicien = ?"
-                . " WHERE Musicien.Code_Musicien = ?";
+        $query = "SELECT DISTINCT Album.Code_Album, Album.Titre_Album, Album.Année_Album, Album.Pochette FROM Album
+                INNER JOIN Disque ON Disque.Code_Album = Album.Code_Album
+                INNER JOIN Composition_Disque ON Disque.Code_Disque = Composition_Disque.Code_Disque
+                INNER JOIN Enregistrement ON Enregistrement.Code_Morceau = Composition_Disque.Code_Morceau
+                INNER JOIN Composition ON Enregistrement.Code_Composition = Composition.Code_Composition
+                INNER JOIN Composition_Oeuvre ON Composition_Oeuvre.Code_Composition = Composition.Code_Composition
+                INNER JOIN Oeuvre ON Oeuvre.Code_Oeuvre = Composition_Oeuvre.Code_Oeuvre
+                INNER JOIN Composer ON Composer.Code_Oeuvre = Oeuvre.Code_Oeuvre
+                INNER JOIN Musicien ON Composer.Code_Musicien = ?
+                WHERE Musicien.Code_Musicien = ?";
         
         return $this->db->query($query, array($composer_code, $composer_code));
     }

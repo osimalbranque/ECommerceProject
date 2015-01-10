@@ -37,8 +37,8 @@ class Image_model extends CI_Model
     public function getAlbumImage($album_code)
     {
         $query = "SELECT Album.Pochette Pochette"
-                . "FROM Album"
-                . "WHERE Album.Code_Album = :code";
+                . " FROM Album"
+                . " WHERE Album.Code_Album = ?";
         
         $row = $this->db->query($query, array($album_code));
         if($row->num_rows())

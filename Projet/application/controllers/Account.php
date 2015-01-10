@@ -28,9 +28,11 @@ class Account extends CI_Controller
          
          $config = array(
                    array('field' => 'subscriber_name',
-                         'label' => 'Nom'),
+                         'label' => 'Nom',
+                         'rules' => 'required'),
                     array('field' => 'subscriber_surname',
-                         'label' => 'Prénom'),
+                         'label' => 'Prénom',
+                          'rules' => 'required'),
                    array('field' => 'subscriber_login',
                          'label' => 'Login',
                          'rules' => 'required|uniqueLogin'),
@@ -87,10 +89,10 @@ class Account extends CI_Controller
         $config = array(
                    array('field' => 'subscriber_login',
                          'label' => 'Login',
-                         'rules' => 'required|existingLogin'),
+                         'rules' => 'required|callback_existingLogin'),
                    array('field' => 'subscriber_password',
                          'label' => 'Mot de passe',
-                         'rules' => 'required|rightPassword'),
+                         'rules' => 'required|callback_rightPassword'),
          );
         
         $this->form_validation->set_rules($config);
@@ -101,29 +103,32 @@ class Account extends CI_Controller
                 $this->load->view('Account/login_state');
     }
     
-    private function rightPassword($password)
+    public function rightPassword($password)
     {
         if($this->input->post('subscriber_login'))
         {
             if(!isset($this->Account_model))
             {
                 $this->load->model('Account_model');
-                $passwdFit = $this->Account_model->passwordWithLogin($this->input->post('subscriber_login'), $password)->count_all_results();
+                $passwdFit = $this->Account_model->passwordWithLogin($this->input->post('subscriber_login'), $password)->num_rows();
                 
                 echo $passwdFit;
+                
+                if($passwdFit != 1)
+                    $this->form_validation->set_message('rightPassword', "Votre mot de passe est incorrect.");
                 return $passwdFit == 1;
             }
         }
         return false;
     }
     
-    private function existingLogin($login)
+    public function existingLogin($login)
     {
         if(!isset($this->Account_model))
             $this->load->model('Account_model');
-        $nb_logins = $this->Account_model->getSubscriberCode($login)->num_rows();
+        $nb_logins = $this->Account_model->loginNumber($login);
         if($nb_logins != 1)
-            $this->form_validation->set_message('uniqueLogin', "Vous n'êtes pas identifié comme abonné.");
+            $this->form_validation->set_message('existingLogin', "Vous n'êtes pas identifié comme abonné.");
         return $nb_logins == 1;
     }
     
@@ -133,7 +138,7 @@ class Account extends CI_Controller
             $this->load->model('Account_model');
         $nb_logins = $this->Account_model->loginNumber($login);
         if($nb_logins != 0)
-            $this->form_validation->set_message('uniqueLogin', 'Le login existe déjà !');
+            $this->form_validation->set_message('uniqueLogin', 'Ce login est déjà réservé.');
         return $nb_logins == 0;
     }
 }

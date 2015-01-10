@@ -23,6 +23,9 @@ class Account extends CI_Controller
          $this->load->helper(array('form', 'url'));
          $this->load->library('form_validation');
          
+         $this->load->view('General/header');
+        $this->load->view('General/dropdown');
+         
          $config = array(
                    array('field' => 'subscriber_name',
                          'label' => 'Nom'),
@@ -78,13 +81,16 @@ class Account extends CI_Controller
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         
+        $this->load->view('General/header');
+        $this->load->view('General/dropdown');
+        
         $config = array(
                    array('field' => 'subscriber_login',
                          'label' => 'Login',
-                         'rules' => 'required'),
+                         'rules' => 'required|existingLogin'),
                    array('field' => 'subscriber_password',
                          'label' => 'Mot de passe',
-                         'rules' => 'required|min_length[6]'),
+                         'rules' => 'required|rightPassword'),
          );
         
         $this->form_validation->set_rules($config);
@@ -93,6 +99,32 @@ class Account extends CI_Controller
                 $this->load->view('Account/login');
         else
                 $this->load->view('Account/login_state');
+    }
+    
+    private function rightPassword($password)
+    {
+        if($this->input->post('subscriber_login'))
+        {
+            if(!isset($this->Account_model))
+            {
+                $this->load->model('Account_model');
+                $passwdFit = $this->Account_model->passwordWithLogin($this->input->post('subscriber_login'), $password)->count_all_results();
+                
+                echo $passwdFit;
+                return $passwdFit == 1;
+            }
+        }
+        return false;
+    }
+    
+    private function existingLogin($login)
+    {
+        if(!isset($this->Account_model))
+            $this->load->model('Account_model');
+        $nb_logins = $this->Account_model->getSubscriberCode($login)->num_rows();
+        if($nb_logins != 1)
+            $this->form_validation->set_message('uniqueLogin', "Vous n'êtes pas identifié comme abonné.");
+        return $nb_logins == 1;
     }
     
     private function uniqueLogin($login)

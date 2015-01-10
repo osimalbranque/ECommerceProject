@@ -11,7 +11,7 @@
  *
  * @author osi
  */
-class Account extends CI_Model
+class Account_model extends CI_Model
 {
     public function __construct()
     {
@@ -46,5 +46,14 @@ class Account extends CI_Model
         $this->db->where('Abonné.Login', $login);
         
         return $this->db->count_all_results();
+    }
+    
+    public function passwordWithLogin($login, $passwd)
+    {
+        $query = "SELECT Abonné.Password"
+                . "FROM Abonné"
+                . "WHERE Abonné.Login = ? AND Abonné.Password = ?";
+        
+        return $this->db->query($query, array($login, $passwd));
     }
 }

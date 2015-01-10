@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php require_once(site_url('index.php/General/dropdown')); ?>
         <section>
         <?php echo validation_errors(); ?>
-        <?php echo form_open('login'); ?>
+        <?php echo form_open('index.php/Account/Login'); ?>
         
         <input type="text" name="subscriber_login" value="" /> <br />
         <input type="password" name="subscriber_password" value="" /> <br />
         
-        <input type="submit" value="form_validation" name="Se connecter" />
+        <input type="submit" value="Se connecter" name="form_validation" />
         
         </form>
         </section>

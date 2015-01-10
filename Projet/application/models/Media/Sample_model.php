@@ -18,7 +18,19 @@ class Sample_model extends CI_Model
         parent::__construct();
     }
     
-    public function getMusicianSample($album_code, $sample_code)
+    public function getMusicianSample($sample_code)
     {
+        $query = "SELECT Extrait
+                  FROM Enregistrement
+                  WHERE Enregistrement.Code_Morceau = ?";
+        $row = $this->db->query($query, array($sample_code));
+        if($row->num_rows())
+        {
+            $data = $row->row_array();
+            $row->free_result();
+        }
+        $lob = $data['Extrait'];
+        
+        return (isset($lob)) ? $lob : '';
     }
 }

@@ -17,4 +17,15 @@ class Album_model extends CI_Model
     {
         parent::__construct();
     }
+    
+    public function getSamplesByAlbum($album_code)
+    {
+        $query = "SELECT Enregistrement.Code_Morceau, Enregistrement.Titre, Enregistrement.Prix"
+                . " FROM Enregistrement"
+                . " INNER JOIN Composition_Disque ON Composition_Disque.Code_Morceau = Enregistrement.Code_Morceau"
+                . " INNER JOIN Disque ON Disque.Code_Disque = Composition_Disque.Code_Disque"
+                . " INNER JOIN Album ON Disque.Code_Album = ?"
+                . " WHERE Album.Code_Album = ?";
+        return $this->db->query($query, array($album_code, $album_code));
+    }
 }

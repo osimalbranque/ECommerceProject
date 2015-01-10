@@ -20,6 +20,8 @@ class Musician extends CI_Controller
     
     public function Composer()
     {
+        $this->load->view('General/header');
+        $this->load->view('General/dropdown');
         if(!$this->input->post('initial'))
         {
             $this->load->view('Musician/composers');
@@ -32,6 +34,14 @@ class Musician extends CI_Controller
             $data['data'] = $this->Composer_model->getComposersNamesBeginningBy($initial);
             $this->load->view('Musician/composers', $data);
         }
+    }
+    
+    public function About_Composer($composer_code)
+    {
+        $this->load->model('Musician/Composer_model');
+        $data = array();
+        $data['data'] = $this->Composer_model->getAlbumsFromComposer($composer_code);
+        $this->load->view('Musician/about_composer/'.$composer_code, $data);
     }
     
     public function Singer()

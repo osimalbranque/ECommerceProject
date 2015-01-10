@@ -1,5 +1,4 @@
-        <div class="container">
-            <?php require_once('/General/dropdown.php'); ?>	
+        <div class="container">	
 	<img src="background.jpg" alt="First slide">
         </img>
             <?php echo base_url(); ?>

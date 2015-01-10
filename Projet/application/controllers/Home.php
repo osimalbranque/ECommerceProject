@@ -20,6 +20,8 @@ class Home extends CI_Controller
     
     public function index() 
     {
+        $this->load->view('General/header');
+        $this->load->view('General/dropdown');
         $this->load->view('index');
     }
 }

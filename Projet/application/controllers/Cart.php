@@ -11,7 +11,21 @@
  *
  * @author osi
  */
-class ShoppingCart extends CI_Controller
+class Cart extends CI_Controller
 {
-    //put your code here
+    public function __construct()
+    {
+        parent::__construct();
+    }
+    
+    public function index()
+    {
+        $this->load->library('session');
+        if(!isset($this->session->userdata('subscriber_id')))
+            $this->load->view('Account/login');
+        else
+        {
+            $this->load->view('Cart/purchases');
+        }
+    }
 }

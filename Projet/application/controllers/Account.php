@@ -100,7 +100,17 @@ class Account extends CI_Controller
         if ($this->form_validation->run() == FALSE)
                 $this->load->view('Account/login');
         else
+        {
+                $this->load->library('session');
+                $this->load->model('Account_model');
+                
+                $this->session->set_userdata('subscriber_id',
+                                             $this->Account_model
+                                                  ->getSubscriberCode
+                                                 ($this->input
+                                                        ->post('subscriber_login'))['Abonné.Code_Abonné']);
                 $this->load->view('Account/login_state');
+        }
     }
     
     public function rightPassword($password)
@@ -111,8 +121,6 @@ class Account extends CI_Controller
             {
                 $this->load->model('Account_model');
                 $passwdFit = $this->Account_model->passwordWithLogin($this->input->post('subscriber_login'), $password)->num_rows();
-                
-                echo $passwdFit;
                 
                 if($passwdFit != 1)
                     $this->form_validation->set_message('rightPassword', "Votre mot de passe est incorrect.");

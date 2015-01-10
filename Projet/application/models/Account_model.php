@@ -56,4 +56,12 @@ class Account_model extends CI_Model
         
         return $this->db->query($query, array($login, $passwd));
     }
+    
+    public function getSubscriberCode($login)
+    {
+        $query = "SELECT Abonné.Code_Abonné"
+                . "FROM Abonné"
+                . "WHERE Abonné.Login = ?";
+        return $this->db->query($query, array($login))->row_array();
+    }
 }

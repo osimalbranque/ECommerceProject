@@ -12,4 +12,5 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="<?php echo css_url('stylesheet');?>" />
 	<link rel="icon" href="../../assets/img/favicon.jpg">
     </head>
-    <div class="container-fluid">
+    <body>
+        <div class="container-fluid">

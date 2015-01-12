@@ -1,7 +1,7 @@
 <body>
     <div class="row">
         <ul id="main_menu" class="col-xs-8 col-sm-12 col-md-12 col-lg-12">
-            <a href="<?php echo site_url('index.php/General/dropdown'); ?>">Accueil</a>
+            <a href="<?php echo site_url('index.php'); ?>">Accueil</a>
             <li><a href="#">Liste alphabétique</a>
                 <ul>
                     <li><a href="#">Albums</a>
@@ -57,14 +57,14 @@
                 </ul>
             </li>
             <li><a href="about.php">A propos</a></li>
-            <li><a href="<?php echo site_url('Instruments/Instruments'); ?>">Instruments</a></li>
-            <li><a href="<?php echo site_url('Kind/Kinds'); ?>">Genres</a></li>
+            <li><a href="<?php echo site_url('index.php/Instruments/Instruments'); ?>">Instruments</a></li>
+            <li><a href="<?php echo site_url('index.php/Kind/Kinds'); ?>">Genres</a></li>
             <li>
-                <a href="<?php echo site_url('Account/Register'); ?>">S'inscrire</a>
+                <a href="<?php echo site_url('index.php/Account/Register'); ?>">S'inscrire</a>
             </li>
             <li>
-                <a href="<?php echo site_url('Account/Login'); ?>">Connexion</a>
+                <a href="<?php echo site_url('index.php/Account/Login'); ?>">Connexion</a>
             </li>
         </ul>
     </class>
-    <?php require_once('carousel.php'); ?>
+    <?php //require_once('carousel.php'); ?>

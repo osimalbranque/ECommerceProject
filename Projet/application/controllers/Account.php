@@ -16,7 +16,7 @@ class Account extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
+        //$this->load->library('session');
         
         $this->load->view('General/header');
         if(!$this->session->userdata('subscriber_id'))
@@ -116,9 +116,11 @@ class Account extends CI_Controller
     
     public function Logout()
     {
+        //$this->load->view('Account/logout');
+        //$this->session->unset_userdata(array('subscriber_id' => ''));
+        $this->output->set_header('Cache-Control: no-store, no-cache, must-revalidate');
         $this->session->sess_destroy();
-        $this->session->set_userdata(array('subscriber_id' => ''));
-        $this->load->view('Account/logout');
+        redirect('index.php');
     }
     
     public function rightPassword($password)

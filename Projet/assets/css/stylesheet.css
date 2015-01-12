@@ -1,4 +1,4 @@
-@font-face/* Police d'écriture */
+@font-face/* Police d'Ã©criture */
 {
     font-family : "ChopinScript.otf";
     src : url('../fonts/ChopinScript.otf');
@@ -8,157 +8,236 @@
 
 body
 {
- background-color: #383838;
-        /*background:#313131 url(../img/fond-menu.png) no-repeat top center;*/
+	background-color: #383838;
+    /*background:#313131 url(../img/fond-menu.png) no-repeat top center;*/
+	font-family:"ChopinScript.otf", arial, sans-serif;
+}
+
+li
+{
+	padding:8px 32px;
+}
+
+#container, footer
+{
+	background: -moz-linear-gradient(top, #ffffff 1%, #eaeaea 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#ffffff), color-stop(100%,#eaeaea));
+	background: -webkit-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+	background: -o-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+	background: -ms-linear-gradient(top, #ffffff 1%,#eaeaea 100%);
+	background: linear-gradient(#ffffff 1%,#eaeaea 100%);
+
+	position: relative;
+    padding: 15px 15px 35px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 3px rgba(0,0,0,.1);
+	border-radius:10px 10px;
+	text-align: center;
+	z-index: -1;
 }
 
 /* ====================== BARRE DE MENU DEROULANT HORIZONTAL ====================== */
 
-#main_menu, #main_menu ul/* Liste */ 
+#main_menu
 {
- padding:0;/* pas de marge intérieure */
- margin:0;/* ni extérieure */
- list-style:none;/* Supprime le style par défaut de la liste */
- text-align:left;/* Met à gauche le texte qui se trouve dans la liste */
- font-family:"ChopinScript.otf", arial;
+	width: 100%;
+	margin: 0;
+	padding: 10px 0 0 0;
+	list-style: none;  
+	background: #111;
+	background: -moz-linear-gradient(#444, #111); 
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #111),color-stop(1, #444));	
+	background: -webkit-linear-gradient(#444, #111);	
+	background: -o-linear-gradient(#444, #111);
+	background: -ms-linear-gradient(#444, #111);
+	background: linear-gradient(#444, #111);
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	-moz-box-shadow: 0 2px 1px #9c9c9c;
+	-webkit-box-shadow: 0 2px 1px #9c9c9c;
+	box-shadow: 0 2px 1px #9c9c9c;
 }
+
 
 #main_menu li
 {
- display:inline-block;/* Place les liens du menu horizontalement */
- position:relative;
- border-radius:8px 8px 0 0;/* Arrondir les coins supérieurs des boutons du menu déroulant */
- text-align: center;
- background-color: #000;
+	float: left;
+	padding: 0 0 10px 0;
+	position: relative;
+	line-height: 0;
 }
 
-#main_menu ul>li, #menu_bandmaster li /* Liste de chaque menu */
+#main_menu a 
 {
- /* Enlève ce comportement pour les liens du sous menu */
- display:inherit;/* Pour que les sous-menu se place verticalement sous les menus */
- border-radius:0;
+	float: left;
+	height: 25px;
+	padding: 0 25px;
+	color: #999;
+	text-transform: uppercase;
+	font: bold 12px/25px Arial, Helvetica;
+	text-decoration: none;
+	text-shadow: 0 1px 0 #000;
 }
 
-#main_menu>li:nth-child(4), #main_menu>li:last-child
+#main_menu li:hover > a
 {
- float: right;
- margin-right: 5px;/* Espace entre "Connexion" et "S'inscrire" */
+	color: #fafafa;
 }
 
-/* Dégradé pour chaque lien dans le menu principal 
-#main_menu>li:first-child, #main_menu>li:nth-child(2), 
-#main_menu>li:nth-child(3),
-#main_menu>li:nth-child(4), #main_menu>li:last-child*/
-#main_menu li
+#main_menu li:hover > ul
 {
- background-color: #000;
- background-image:-webkit-linear-gradient(top, #000 0%, #383838 100%);
- background-image:linear-gradient(to bottom, #000 0%, #383838 100%);
+	display: block;
 }
+
+/* sous-menu */
 
 #main_menu ul
 {
- position:absolute;
- max-height:0;
- left: 0;
- right: 0;
- overflow:hidden;
- -moz-transition: .7s all .3s;
- -webkit-transition: .7s all .3s;
- transition: .7s all .3s;
+    width: 65px;
+    list-style: none;
+    margin-left: 25px;
+    padding: 0;    
+    display: none;
+    position: absolute;
+    top: 35px;
+    left: 0;
+    z-index: 99999;    
+    background: #444;
+    background: -moz-linear-gradient(#444, #111);
+    background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #111),color-stop(1, #444));
+    background: -webkit-linear-gradient(#444, #111);    
+    background: -o-linear-gradient(#444, #111);	
+    background: -ms-linear-gradient(#444, #111);	
+    background: linear-gradient(#444, #111);
+    -moz-box-shadow: 0 0 2px rgba(255,255,255,.5);
+    -webkit-box-shadow: 0 0 2px rgba(255,255,255,.5);
+    box-shadow: 0 0 2px rgba(255,255,255,.5);	
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
-#main_menu a/* Les onglets du menu principal */
+
+<!-- SÃ©lection sous-menu -->
+#main_menu ul li
 {
- text-decoration:none;
- display:block;
- padding:8px 32px;
- color:#fff;/* Blanc */
+	width: 130px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    display: block;  
+    -moz-box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+    -webkit-box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+    box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
 }
 
-/* background des liens menus et sous menus au survol */
-#main_menu li:first-child:hover, #main_menu li:first-child li:hover,
-#main_menu li:nth-child(2):hover, #main_menu li:nth-child(2) li:hover,
-#main_menu li:nth-child(3):hover, #main_menu li:nth-child(3) li:hover,
-#main_menu li:nth-child(4):hover, #main_menu li:nth-child(4) li:hover,
-#main_menu li:nth-child(5):hover, #main_menu li:last-child:hover/* Colorie en blanc les liens "Connexion" et "s'inscrire" dans le menu, au survol de la souris */
+
+
+#main_menu ul a
+{    
+	height: 10px;
+	width: 130px;
+	height: 3px;
+    line-height: 1;
+    display: block;
+    white-space: nowrap;
+    float: none;
+	text-transform: none;
+}
+
+
+#main_menu ul li:first-child > a:after
 {
- background:#FFF;/* Blanc */
+    content: '';
+    position: absolute;
+    left: 25px;
+    top: -8px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 8px solid #444;
 }
 
-#main_menu li:hover li a/* Faire apparaitre les liens des sous-menu en blanc, quand on survol le lien du menu principal correspondant */
+
+
+
+/* Clear floated elements */
+#main_menu:after 
 {
- color: #FFF;/* Blanc */
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
 }
 
-#main_menu li:hover a, #main_menu li li:hover a/* Sélection des liens du menu principal ou dans un sous-menu */
-{
- color:#000;/* Noir */
+table{
+   width: 25em;
+   border-collapse: separate;
+   border-spacing: 2px;
+   caption-side: bottom;
+   
 }
 
-#main_menu li:hover ul
-{
- max-height:50em;/* Hauteur total des sous-menu au survol de la souris */
+/* Tableau ( pour le panier )*/
+
+td, th {
+   padding: 6px 12px;
 }
 
-#main_menu li li:last-child, #main_menu li li:last-child:hover,
-#menu_orchestra li:last-child, #menu_bandmaster li:last-child
-{
- border-radius:0 0 8px 8px;/* Le dernier élément (de chaque menu déroulant) a les coins inférieurs arrondis */
+th {
+   text-align: left;
+}
+td:last-child, th:last-child{
+   text-align : right;
+}
+table caption{
+   color:#00F;
+   font-style: italic;
+   padding: 10px;
+   border-bottom: 1 px solid #ccc;
 }
 
-/* ====================== MENU DES CHEFS D'ORCHESTRE ====================== */
 
-#menu_bandmaster li 
-{
- display: inline;
- font-size: 12px; /* Pour réduire la taille des mots clés trop longs */
- font-weight: bold;
- margin: auto;
- position: relative;
+tr:nth-child(odd){
+   background: gray;
+}
+tr:nth-child(even){
+   background: gray;
+}
+tr:first-child{
+   background: gray;
+   color: white;
 }
 
-#menu3 li:hover ul li{
- display:inline-block;
- }
- 
- #menu3 li:hover ul li ul{
- display:none;
- }
-  #menu3 li:hover ul li:hover ul{
- display:inline-block;
- }
- 
- #menu3 li:hover ul:hover li:hover{
- display:inline-block;
- }
- 
- #menu3 li ul {
- position:absolute;
- left:100%;
- top: 0px;
- 
- }
+table td:empty{
+   background: white;
+}
 
-#footer {
-    background-color:white;
-    color:black;
-    clear:both;
-    text-align:center;
-    padding:5px;
-    bottom: 0px; 
+
+table td:empty, table td:empty:hover{
+  background: #B8B9B9;
+}
+
+table tr + tr:hover{
+  background: #B8B9B9;
+  color:black;
+}
+table tr+tr td:hover, table tr+tr th:hover{
+  background: #DADBDB;
 }
 
 /* ====================== IMAGE ====================== */
 
 img
 {
- border:0
+	border:0
 }
 
 img
 {
- max-width:100%!important
+	max-width:100%!important
 }
 
 /* ====================== SECTION ====================== */

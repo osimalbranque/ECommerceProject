@@ -18,13 +18,13 @@ class Home extends CI_Controller
     {
         parent::__construct();
         
-        $this->load->library('session');
+        //$this->load->library('session');
         
         $this->load->view('General/header');
         if(!$this->session->userdata('subscriber_id'))
-            $this->load->view('General/connected_dropdown');
-        else
             $this->load->view('General/dropdown');
+        else
+            $this->load->view('General/connected_dropdown');
     }
     
     public function index() 

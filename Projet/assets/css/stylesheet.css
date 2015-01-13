@@ -1,22 +1,21 @@
-@font-face/* Police d'Ã©criture */
-{
-    font-family : "ChopinScript.otf";
-    src : url('../fonts/ChopinScript.otf');
-}
-
 /* ====================== CONTENU GENERAL ====================== */
+*
+{
+	font: Times, Arial, sans-serif;
+}
 
 body
 {
 	background-color: #383838;
     /*background:#313131 url(../img/fond-menu.png) no-repeat top center;*/
-	font-family:"ChopinScript.otf", arial, sans-serif;
 }
 
-li
+
+#container
 {
-	padding:8px 32px;
+    margin-bottom: 30px;
 }
+
 
 #container, footer
 {
@@ -29,11 +28,15 @@ li
 
 	position: relative;
     padding: 15px 15px 35px 30px;
-    margin-bottom: 30px;
     box-shadow: 0 0 3px rgba(0,0,0,.1);
-	border-radius:10px 10px;
+	border-radius: 10px 10px;
 	text-align: center;
 	z-index: -1;
+}
+
+footer
+{
+	margin-top: 30px;
 }
 
 /* ====================== BARRE DE MENU DEROULANT HORIZONTAL ====================== */
@@ -43,7 +46,8 @@ li
 	width: 100%;
 	margin: 0;
 	padding: 10px 0 0 0;
-	list-style: none;  
+	list-style: none; 
+	
 	background: #111;
 	background: -moz-linear-gradient(#444, #111); 
     background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #111),color-stop(1, #444));	
@@ -51,10 +55,13 @@ li
 	background: -o-linear-gradient(#444, #111);
 	background: -ms-linear-gradient(#444, #111);
 	background: linear-gradient(#444, #111);
+	
 	-moz-border-radius: 50px;
 	border-radius: 50px;
+	
 	-moz-box-shadow: 0 2px 1px #9c9c9c;
 	-webkit-box-shadow: 0 2px 1px #9c9c9c;
+	
 	box-shadow: 0 2px 1px #9c9c9c;
 }
 
@@ -71,14 +78,24 @@ li
 {
 	float: left;
 	height: 25px;
-	padding: 0 25px;
-	color: #999;
+	padding: 0 35px;
+	color: #999;	
 	text-transform: uppercase;
-	font: bold 12px/25px Arial, Helvetica;
 	text-decoration: none;
 	text-shadow: 0 1px 0 #000;
 }
 
+#main_menu li ul li ul li a
+{
+	padding:0;
+}
+
+#main_menu a, #main_menu li:hover > ul
+{
+	font: bold 12px/25px Arial, Helvetica;
+}
+
+/* Au survol de la souris dans le menu et sous-menu */
 #main_menu li:hover > a
 {
 	color: #fafafa;
@@ -87,21 +104,27 @@ li
 #main_menu li:hover > ul
 {
 	display: block;
+	color: #999;
+}
+
+#main_menu ul li a
+{
+	float: right;
 }
 
 /* sous-menu */
-
 #main_menu ul
 {
-    width: 65px;
+	text-align: center;
     list-style: none;
-    margin-left: 25px;
+    margin-left: 20px;
     padding: 0;    
     display: none;
     position: absolute;
     top: 35px;
     left: 0;
-    z-index: 99999;    
+    z-index: 99999;
+	
     background: #444;
     background: -moz-linear-gradient(#444, #111);
     background: -webkit-gradient(linear,left bottom,left top,color-stop(0, #111),color-stop(1, #444));
@@ -109,28 +132,43 @@ li
     background: -o-linear-gradient(#444, #111);	
     background: -ms-linear-gradient(#444, #111);	
     background: linear-gradient(#444, #111);
+	
     -moz-box-shadow: 0 0 2px rgba(255,255,255,.5);
     -webkit-box-shadow: 0 0 2px rgba(255,255,255,.5);
     box-shadow: 0 0 2px rgba(255,255,255,.5);	
+	
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
 
 
-<!-- SÃ©lection sous-menu -->
+/* Sélection sous-menu */
 #main_menu ul li
 {
 	width: 130px;
     float: left;
     margin: 0;
     padding: 0;
-    display: block;  
+    display: block;
+	
     -moz-box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
     -webkit-box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
     box-shadow: 0 1px 0 #111111, 0 2px 0 #777777;
+	
+	padding: 10px 10px 5px 5px;
 }
 
+/* Sous-menu et sous-sous-menu */
+#main_menu ul ul li a, #main_menu li ul li
+{
+	padding: 15px 40px 15px 40px;
+}
 
+/* Sous-sous-menu */
+#main_menu ul ul
+{
+    margin-left: 150px;
+}
 
 #main_menu ul a
 {    
@@ -144,7 +182,7 @@ li
 	text-transform: none;
 }
 
-
+/* Pour avoir en effet de bulle au-dessus de chaque menu */
 #main_menu ul li:first-child > a:after
 {
     content: '';
@@ -156,12 +194,10 @@ li
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 8px solid #444;
+	display: inline-block;
 }
 
-
-
-
-/* Clear floated elements */
+/* Efface les flottants */
 #main_menu:after 
 {
 	visibility: hidden;
@@ -172,15 +208,15 @@ li
 	height: 0;
 }
 
+/* Tableau ( pour le panier )*/
+
 table{
    width: 25em;
    border-collapse: separate;
    border-spacing: 2px;
    caption-side: bottom;
-   
+   text-align: center;
 }
-
-/* Tableau ( pour le panier )*/
 
 td, th {
    padding: 6px 12px;

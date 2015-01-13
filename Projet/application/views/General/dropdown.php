@@ -67,4 +67,10 @@
             </li>
         </ul>
     </class>
-    <?php //require_once('carousel.php'); ?>
+    <p style="text-align: center">
+                Dans le cadre du cours de Programmation Web, nous avons réalisé un site de vente de musique classique.<br>
+            	Il est possible de consulter des musiciens, des compositeurs, des interprètes, des chefs d'orchestre issus d'une base de données (et bien d'autre). On pourra ensuite lier les compositeurs 
+            	au site Internet Amazon.<br><br>
+                Il est même possible d'écouter les extrait des enregistrements pour se faire une opinion avant d'ajouter au panier et d'acheter.
+    </p>          
+                

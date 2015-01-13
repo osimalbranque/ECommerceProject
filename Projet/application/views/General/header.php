@@ -10,7 +10,6 @@ and open the template in the editor.
         <title>Bienvenue sur le site de ClassicoFolies</title>
         <link rel="stylesheet" type="text/css" href="<?php echo css_url('bootstrap'); ?>" />
         <link rel="stylesheet" type="text/css" href="<?php echo css_url('stylesheet');?>" />
-        <link rel="stylesheet" type="text/css" href="<?php echo css_url('carousel');?>" />
 	<link rel="icon" href="../../../assets/img/favicon.jpg">
     </head>
     <body>

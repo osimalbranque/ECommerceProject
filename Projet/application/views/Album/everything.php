@@ -10,7 +10,7 @@
                       .'/'
                       .$row['Code_Album']
                       .'" alt ="" /> <br />';
-                echo '<a href="'.site_url('index.php/Album/'
+                echo '<a href="'.site_url('index.php/Album/test/'
                                 .$row['Code_Album']).'">'
                                 .$row['Titre_Album']
                                 . ' '

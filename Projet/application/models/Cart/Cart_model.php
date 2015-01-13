@@ -18,6 +18,13 @@ class Cart_model extends CI_Model
         parent::__construct();
     }
     
+    public function addOrder($sample_code)
+    {
+        $orders = $this->session->userdata('purchases_list');
+        $orders[] = $sample_code;
+        $this->session->set_userdata('purchases_list', $orders);
+    }
+    
     public function deletePurchase($sample_code)
     {
         $purchases_updated = $this->session->userdata('purchases_list');
@@ -42,13 +49,21 @@ class Cart_model extends CI_Model
         return count($this->session->userdata('purchases_list'));
     }
     
+    public function getOrders($orders = array())
+    {
+        return $this->db->select('Code_Morceau, Titre, Durée, Prix')
+                        ->from('Enregistrement')
+                        ->where_in('Code_Morceau', $orders)
+                        ->get();
+    }
+    
     public function getPurchases($subscriber_code)
     {
         $query = "SELECT Enregistrement.Code_Morceau, Enregistrement.Titre, Enregistrement.Durée, Enregistrement.Nom_de_Fichier"
-                . "FROM Enregistrement"
-                . "INNER JOIN Achat ON Achat.Code_Enregistrement = Enregistrement.Code_Enregistrement"
-                . "INNER JOIN Abonné ON Abonné.Code_Abonné = ?"
-                . "WHERE Abonné.Code_Abonné = ?";
+                . " FROM Enregistrement"
+                . " INNER JOIN Achat ON Achat.Code_Enregistrement = Enregistrement.Code_Morceau"
+                . " INNER JOIN Abonné ON Achat.Code_Abonné = ?"
+                . " WHERE Abonné.Code_Abonné = ?";
         
         return $this->db->query($query, array($subscriber_code, $subscriber_code));
     }
@@ -77,6 +92,9 @@ class Cart_model extends CI_Model
         
         if($subscriber_credit - $sample_price > 0)
         {
+            $purchases_updated = $this->session->userdata('purchases_list');
+            unset($purchases_updated[array_search($sample_code, $purchases_updated)]);
+            
             $data = array('Credit' => $subscriber_credit - $sample_price);
             $this->db->where('Code_Abonné', $subscriber_code);
             $this->db->update($data);

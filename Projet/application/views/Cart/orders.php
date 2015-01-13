@@ -1,4 +1,5 @@
 <body>
+    <img src="<?php echo img_url('button_cart.jpg'); ?>" alt="" /> <br />
         <?php
             foreach($data->result_array() as $row)
             {

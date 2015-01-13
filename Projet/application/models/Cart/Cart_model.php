@@ -18,6 +18,30 @@ class Cart_model extends CI_Model
         parent::__construct();
     }
     
+    public function deletePurchase($sample_code)
+    {
+        $purchases_updated = $this->session->userdata('purchases_list');
+        unset($purchases_updated[array_search($sample_code, $purchases_updated)]);
+        $this->session->set_userdata('purchases_list', $purchases_updated);
+    }
+    
+    public function totalCost()
+    {
+        $total_cost = 0;
+        $purchases_updated = $this->session->userdata('purchases_list');
+        for($i = 0; $i < count($purchases_updated); $i++)
+        {
+            $total_cost += $purchases_updated[$i];
+        }
+        
+        return $total_cost;
+    }
+    
+    public function nbArticles()
+    {
+        return count($this->session->userdata('purchases_list'));
+    }
+    
     public function getPurchases($subscriber_code)
     {
         $query = "SELECT Enregistrement.Code_Morceau, Enregistrement.Titre, Enregistrement.Durée, Enregistrement.Nom_de_Fichier"
@@ -35,5 +59,30 @@ class Cart_model extends CI_Model
         $this->db->set('Code_Enregistrement', $sample_code);
         
         $this->db->insert('Achat');
+    }
+    
+    public function debitMoney($subscriber_code, $sample_code)
+    {
+        $sample_price_query = "SELECT Enregistrement.Prix "
+                . " FROM Enregistrement"
+                . " WHERE Enregistrement.Code_Morceau = ?";
+        $sample_price = $this->db->query($sample_price_query, array($sample_code))
+                                 ->result_array()['Prix'];
+        
+        $subscriber_credit_query = "SELECT Abonné.Credit"
+                                   . " FROM Abonné"
+                                   . " WHERE Abonné.Code_Abonné = ?";
+        $subscriber_credit = $this->db->query($subscriber_credit_query, array($subscriber_code))
+                                 ->result_array()['Credit'];
+        
+        if($subscriber_credit - $sample_price > 0)
+        {
+            $data = array('Credit' => $subscriber_credit - $sample_price);
+            $this->db->where('Code_Abonné', $subscriber_code);
+            $this->db->update($data);
+            return true;
+        }
+        
+        return false;
     }
 }

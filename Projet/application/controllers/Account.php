@@ -110,6 +110,7 @@ class Account extends CI_Controller
                                                   ->getSubscriberCode
                                                  ($this->input
                                                         ->post('subscriber_login'))[utf8_decode('Code_Abonné')]);
+                $this->session->set_userdata('purchases_list', array());
                 $this->load->view('Account/login_state');
         }
     }

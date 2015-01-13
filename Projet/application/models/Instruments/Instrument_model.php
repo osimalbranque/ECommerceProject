@@ -15,6 +15,16 @@ class Instrument_model extends CI_Model
         parent::__construct();
     }
     
+    public function getAllInstruments()
+    {
+        $query = "SELECT Musicien.Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)'), COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)'), Musicien.Photo
+                  FROM Musicien
+                  INNER JOIN Instrument ON Musicien.Code_Instrument = Instrument.Code_Instrument
+                  WHERE Musicien.Nom_Musicien LIKE :initial'
+                  GROUP BY Musicien.Code_Musicien, Musicien.Nom_Musicien, Musicien.Prénom_Musicien, Musicien.Photo
+                  ORDER BY Musicien.Nom_Musicien";
+    }
+    
     public function getInstrumentsBeginningBy($initial)
     {
         $query = "SELECT Musicien.Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)'), COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)'), Musicien.Photo

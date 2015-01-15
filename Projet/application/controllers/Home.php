@@ -30,10 +30,12 @@ class Home extends CI_Controller
     public function index() 
     {
         $this->load->view('index');
+        $this->load->view('General/footer');
     }
     
     public function About()
     {
         $this->load->view('General/about');
+        $this->load->view('General/footer');
     }
 }

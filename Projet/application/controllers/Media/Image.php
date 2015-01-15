@@ -26,6 +26,14 @@ class Image extends CI_Controller
        $this->load->view('Media/image.php', $data);
     }
     
+    public function Instrument($code)
+    {
+        $this->load->model('Media/Image_model');
+        $data['lob'] = $this->Image_model->getInstrumentImage($code);
+       // echo $data['lob'];
+       $this->load->view('Media/image.php', $data);
+    }
+    
     public function Album($code)
     {
         $this->load->model('Media/Image_model');

@@ -50,4 +50,21 @@ class Image_model extends CI_Model
         
         return (isset($lob)) ? $lob : '';
     }
+    
+    public function getInstrumentImage($instrument_code)
+    {
+        $query = "SELECT Instrument.Image"
+                . " FROM Instrument"
+                . " WHERE Instrument.Code_Instrument = ?";
+        
+        $row = $this->db->query($query, array($instrument_code));
+        if($row->num_rows())
+        {
+            $data = $row->row_array();
+            $row->free_result();
+        }
+        $lob = $data['Image'];
+        
+        return (isset($lob)) ? $lob : '';
+    }
 }

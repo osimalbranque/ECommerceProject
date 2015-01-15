@@ -1,8 +1,21 @@
-<?php
-
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+<section>
+    <?php
+        if(isset($data))
+        {
+            foreach($data->result_array() as $row)
+            {
+                echo '<div class="musician_info">';
+                echo '<img src="'
+                      .site_url('index.php/Media/Image/Musician')
+                      .'/'
+                      .$row['Code_Musicien']
+                      .'" alt ="" /> <br />';
+                echo '<a href="'.site_url('index.php/Musician/Musicians/'
+                                .$row['Code_Musicien']).'">'
+                                .$row['Nom_Musicien'].' '.$row[utf8_decode('Prénom_Musicien')]
+                                .'</a>';
+                echo '</div>';
+            }
+        }
+    ?>
+</section>

@@ -42,4 +42,25 @@ class Album_model extends CI_Model
                 . " WHERE Album.Code_Album = ?";
         return $this->db->query($query, array($album_code, $album_code));
     }
+    
+    public function getAlbumsByKind($kind_code)
+    {
+        $query = "SELECT Album.Code_Album, Album.Titre_Album, Album.Année_Album, Album.Pochette"
+                . " FROM Album"
+                . " INNER JOIN Genre ON Genre.Code_Genre = Album.Code_Genre"
+                . " WHERE Genre.Code_Genre = ?";
+        return $this->db->query($query, array($kind_code));
+    }
+    
+    public function getAlbumsBySinger($singer_code)
+    {
+         $query = "SELECT Album.Code_Album, Album.Titre_Album, Album.Année_Album"
+                . " FROM Album"
+                 . " INNER JOIN Genre ON Genre.Code_Genre = Album.Code_Genre"
+                 . " INNER JOIN Musicien ON Musicien.Code_Genre = Genre.Code_Genre"
+                 . " INNER JOIN Interpréter ON Musicien.Code_Musicien = Interpréter.Code_Musicien"
+                . " WHERE Musicien.Code_Musicien = ?";
+         
+         return $this->db->query($query, array($singer_code));
+    }
 }

@@ -87,8 +87,8 @@
                 </li>			
             </ul>
         </li>
-        <li><a href="../Instrument/instruments.php">Instruments</a></li>
-        <li><a href="../Kind/kind.php">Genres</a></li>
+        <li><a href="<?php echo site_url('index.php/Instrument/AllInstruments'); ?>">Instruments</a></li>
+        <li><a href="<?php echo site_url('index.php/Kind/Kinds'); ?>">Genres</a></li>
         <li>
             <a href="<?php echo site_url('index.php/Cart/Orders'); ?>">Mes achats</a>
         </li>

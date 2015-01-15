@@ -29,6 +29,14 @@ class Composer_model extends CI_Model
         return $this->db->query($query);
     }
     
+    public function getComposerName($composer_code)
+    {
+        $query = "SELECT Musicien.Nom_Musicien, Musicien.Prénom_Musicien"
+                . " FROM Musicien"
+                . " WHERE Musicien.Code_Musicien = ?";
+        return $this->db->query($query, array($composer_code));
+    }
+    
     public function getComposersNamesBeginningBy($initial)
     {
         $query = "SELECT Musicien.Code_Musicien Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)') Nom_Musicien, COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)') Prénom_Musicien

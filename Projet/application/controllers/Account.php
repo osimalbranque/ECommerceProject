@@ -80,6 +80,8 @@ class Account extends CI_Controller
                 
                 $this->load->view('Account/register_state');
         }
+        
+        $this->load->view('General/footer');
     }
     
     public function Login()
@@ -113,6 +115,8 @@ class Account extends CI_Controller
                 $this->session->set_userdata('purchases_list', array());
                 $this->load->view('Account/login_state');
         }
+        
+        $this->load->view('General/footer');
     }
     
     public function Logout()

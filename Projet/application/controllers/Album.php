@@ -31,8 +31,14 @@ class Album extends CI_Controller
         
         $data = array();
         $data['data'] = $this->Album_model->getSamplesByAlbum($album_code);
+        if(!$this->session->userdata('subscriber_id'))
+            $data['subscriber_online'] = false;
+        else
+            $data['subscriber_online'] = true;
         
-        $this->load->view('Album/album', $data);   
+        $this->load->view('Album/album', $data);  
+        
+        $this->load->view('General/footer');
     }
     
     public function Albums($letter)
@@ -42,6 +48,8 @@ class Album extends CI_Controller
         $data['data'] = $this->Album_model->getAlbumsBeginningBy($letter);
         
         $this->load->view('Album/everything', $data);
+        
+        $this->load->view('General/footer');
     }
     
     public function Everything()
@@ -52,5 +60,7 @@ class Album extends CI_Controller
         $data['data'] = $this->Album_model->getAllAlbums();
         
         $this->load->view('Album/everything', $data);
+        
+        $this->load->view('General/footer');
     }
 }

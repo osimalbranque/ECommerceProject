@@ -31,14 +31,16 @@ class Instrument extends CI_Controller
         $this->load->model('Instruments/Instrument_model');
         $data = array();
         $data['data'] = $this->Instrument_model->getAllInstruments();
-        $this->load->view('Instruments/instruments', $data);
+        $this->load->view('Instruments/all_instruments', $data);
+        $this->load->view('General/footer');
     }
     
-    public function Instruments($initial)
+    public function Instruments($instrument_code)
     {
-        $this->load->model('Instruments/Instrument_model');
+        $this->load->model('Musician/Musician_model');
         $data = array();
-        $data['data'] = $this->Instrument_model->getInstrumentsBeginningBy($initial);
+        $data['data'] = $this->Musician_model->getMusiciansByInstrument($instrument_code);
         $this->load->view('Instruments/instruments', $data);
+        $this->load->view('General/footer');
     }
 }

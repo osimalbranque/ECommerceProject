@@ -20,6 +20,13 @@ class Kind_model extends CI_Model
         parent::__construct();
     }
     
+    public function getKinds()
+    {
+        $query = "SELECT Genre.Code_Genre, Genre.Libellé_Abrégé"
+                . " FROM Genre";
+        return $this->db->query($query);
+    }
+    
     public function getKindBeginningBy($initial)
     {
         $query = "SELECT Musicien.Code_Musicien, COALESCE(Musicien.Nom_Musicien, '(nom inconnu)'), COALESCE(Musicien.Prénom_Musicien, '(prénom inconnu)'), Musicien.Photo

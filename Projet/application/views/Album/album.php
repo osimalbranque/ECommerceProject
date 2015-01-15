@@ -18,7 +18,9 @@
                 echo '<audio controls="controls">'
                         . '<source src="'.site_url('index.php/Media/Sample/index').'/'.$row['Code_Morceau'].
                         '" type="audio/mp3" /> Votre navigateur est non compatible</audio>';
-                echo '<a href="'.site_url('index.php/Cart/AddOrder/'.$row['Code_Morceau']).'">Ajouter au panier</a>';
+                
+                if($subscriber_online)
+                    echo '<a href="'.site_url('index.php/Cart/AddOrder/'.$row['Code_Morceau']).'">Ajouter au panier</a>';
                 echo '</div>';
             }
         }

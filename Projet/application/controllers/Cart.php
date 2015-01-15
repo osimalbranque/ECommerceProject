@@ -36,6 +36,8 @@ class Cart extends CI_Controller
             $this->load->model('Cart/Cart_model');
             $this->Cart_model->addOrder($sample_code);
         }
+        
+        $this->load->view('General/footer');
     }
     
     public function Orders()
@@ -54,6 +56,8 @@ class Cart extends CI_Controller
             
             $this->load->view('Cart/orders', $data);
         }
+        
+        $this->load->view('General/footer');
     }
     
     public function Purchases()
@@ -70,5 +74,7 @@ class Cart extends CI_Controller
 
             $this->load->view('Cart/orders', $data);
         }
+        
+        $this->load->view('General/footer');
     }
 }
